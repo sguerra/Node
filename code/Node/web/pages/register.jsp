@@ -21,6 +21,7 @@
         <label>repetir contraseña</label>
         <input type="password" class="form-control"/>
     </div>
+    <a class="btn btn-link pull-left" href="?">iniciar sesión</a>
     <button type="submit" class="btn btn-info pull-right">registrar</button>
 
 </form>
