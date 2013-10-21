@@ -14,19 +14,19 @@
         </div>
         <div class="form-group">
             <label>Edad</label>
-            <input type="text" class="form-control"/>
+            <input type="text" class="form-control" value="<%=applicant==null?"":applicant.getAge()%>"/>
         </div>
         <div class="form-group">
             <label>Teléfono</label>
-            <input type="text" class="form-control"/>
+            <input type="text" class="form-control" value="<%=applicant==null?"":applicant.getPhone()%>"/>
         </div>
         <div class="form-group">
             <label>Dirección</label>
-            <input type="text" class="form-control"/>
+            <input type="text" class="form-control" value="<%=applicant==null?"":applicant.getAddress()%>"/>
         </div>
         <div class="form-group">
             <label>Profesión</label>
-            <input type="text" class="form-control"/>
+            <input type="text" class="form-control " value="<%=applicant==null?"":applicant.getDescription()%>"/>
         </div>
         <div class="form-group">
             <label>Habilidades</label>
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group">
             <label>Contacto</label>
-            <input type="text" class="form-control"/>
+            <input type="text" class="form-control" value="<%=applicant==null?"":applicant.getContact()%>"/>
         </div>
         <div class="form-group">
             <label>CV</label>
