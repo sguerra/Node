@@ -15,10 +15,6 @@ public class Petition
         this.function = function;
     }
     
-    public void set(PetitionParam param, Object value)
-    {
-        this.params.put(param, value);
-    }
     public void setParams(Map<PetitionParam,Object> params)
     {
         this.params = params;
