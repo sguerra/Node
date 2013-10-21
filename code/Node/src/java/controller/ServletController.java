@@ -35,13 +35,14 @@ public class ServletController extends HttpServlet
     {
         String fullUrl = request.getRequestURL().toString();
         
-        if(fullUrl.indexOf(INS_SEPARATOR)<=0)
+        // Check Separators
+        if(fullUrl.indexOf(URL_SEPARATOR)<=0)
         {
             this.sendError(request, response);
             return;
         }
         String [] splitUrl = fullUrl.split(URL_SEPARATOR);
-      
+ 
         String urlPattern = splitUrl[splitUrl.length-1];
         if(urlPattern.indexOf(INS_SEPARATOR)<=0)
         {
@@ -49,14 +50,21 @@ public class ServletController extends HttpServlet
             return;
         }
       
+        // Parse Petition
         Map<PetitionParam, Object> params = mapParemeters(request);
         Petition petition = parsePetition(urlPattern, params);
   
+        //Dispatch Response
         Response dataResponse = dataModel.execute(petition);
-        
+        this.dispatch(request, dataResponse);
     }
     
+    private void dispatch(HttpServletRequest request, Response responses)
+    {
     
+    }
+    
+
     private Map<PetitionParam,Object> mapParemeters(HttpServletRequest request)
     {
         Map<PetitionParam,Object> map = new HashMap<PetitionParam,Object>();
@@ -84,19 +92,16 @@ public class ServletController extends HttpServlet
     private Function parseFunction(String urlPattern)
     {
         int sub_index = urlPattern.indexOf(INS_SEPARATOR);
-        String sfunction = urlPattern.substring(sub_index +1,urlPattern.length());
+        String function = urlPattern.substring(sub_index +1,urlPattern.length());
         
-        if(sfunction.equals("add"))
-                return Function.add;
-        
-        return Function.none;
+        return Function.valueOf(function);
     }
     private Entity parseEntity(String urlPattern)
     {
         int sub_index = urlPattern.indexOf(INS_SEPARATOR);
-        String sentity = urlPattern.substring(0,sub_index);
+        String entity = urlPattern.substring(0,sub_index);
         
-        return Entity.valueOf(sentity);
+        return Entity.valueOf(entity);
     }
     
     protected void sendError(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

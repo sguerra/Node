@@ -47,8 +47,6 @@ public class DataModel
                 break;
             case get:
                 break;
-            case none:
-                break;
             default:
                 response.setStatus(Status.PetitionNotFound);
                 break;

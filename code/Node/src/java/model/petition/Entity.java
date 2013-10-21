@@ -5,6 +5,5 @@ public enum Entity
     applicant,
     cv,
     prospect,
-    company,
-    none
+    company
 }

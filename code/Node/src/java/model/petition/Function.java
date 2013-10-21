@@ -7,6 +7,5 @@ public enum Function
     delete,
     modify,
     logout,
-    get,
-    none
+    get
 }
