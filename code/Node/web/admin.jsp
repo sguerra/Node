@@ -13,7 +13,6 @@
                         <th>nombre</th>
                         <th>tipo</th>
                         <th>email</th>
-                        <th>borrado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,13 +20,13 @@
                         <td>mr usuario</td>
                         <td>aplicante</td>
                         <td>mruser@mail.com</td>
-                        <td><input type="checkbox" class="checkbox"/></td>
+                        <td><div class="btn btn-danger">borrar</div></td>
                     </tr>
                     <tr>
                         <td>usuario co</td>
                         <td>compañia</td>
                         <td>company@mail.com</td>
-                        <td><input type="checkbox" class="checkbox"/></td>
+                        <td><div class="btn btn-danger">borrar</div></td>
                     </tr>
                 </tbody>
             </table>

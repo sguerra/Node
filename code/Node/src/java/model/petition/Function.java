@@ -1,5 +1,4 @@
 package model.petition;
-
 public enum Function 
 {
     login,
@@ -8,5 +7,6 @@ public enum Function
     delete,
     modify,
     logout,
-    get
+    get,
+    none
 }

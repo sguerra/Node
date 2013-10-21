@@ -1,9 +1,10 @@
 package model.petition;
 public enum Entity 
 {
-    User,
-    Applicant,
-    CV,
-    Prospect,
-    Company
+    user,
+    applicant,
+    cv,
+    prospect,
+    company,
+    none
 }
