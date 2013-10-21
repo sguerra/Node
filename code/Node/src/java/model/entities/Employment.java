@@ -8,19 +8,21 @@ public class Employment implements java.io.Serializable
     public Employment(){
     }
     
-    public void setemploymentId(int employmentId){
+    public void setEmploymentId(int employmentId)
+    {
         this.employmetId = employmentId;
     }
-    
-    public int getemployment(){
+    public int getEmployment()
+    {
         return this.employmetId;
     }
     
-    public void setname(String name){
+    public void setName(String name)
+    {
         this.name = name;
     }
-    
-    public String getname(){
+    public String getName()
+    {
         return this.name;
     }
 }
