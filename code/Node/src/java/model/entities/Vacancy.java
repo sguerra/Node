@@ -34,10 +34,10 @@ public class Vacancy implements java.io.Serializable
     public double getSalary(){
         return this.salary;
     }
-    public void setSkill(List<Skill> skills){
+    public void setSkills(List<Skill> skills){
         this.skills = skills;
     }
-    public List<Skill> getSkill(){
+    public List<Skill> getSkills(){
         return this.skills;
     }
     public void setDescription(String description){

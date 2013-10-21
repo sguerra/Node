@@ -36,5 +36,9 @@ public class Response
     {
         return this.status;
     }
+    public Petition getPetition()
+    {
+        return this.petition;
+    }
     
 }

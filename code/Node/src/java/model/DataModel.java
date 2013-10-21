@@ -1,5 +1,7 @@
 package model;
 
+import model.entities.Applicant;
+import model.entities.Company;
 import model.entities.User;
 import model.entities.UserType;
 import model.petition.Entity;
@@ -32,18 +34,38 @@ public class DataModel
         switch(petition.getFunction())
         {
             case login:
+                
+                if(petition.getEntity()==Entity.user)
+                    response.set(ResponseObject.user, loginUser(petition));
+                
                 break;
             case add:
+                
                 if(petition.getEntity()==Entity.user)
                     response.set(ResponseObject.user, addUser(petition));
+                
                 break;
             case apply:
                 break;
             case delete:
+                
+                if(petition.getEntity()==Entity.user)
+                    response.set(ResponseObject.user, deleteUser(petition));
+                
                 break;
             case modify:
+                
+                if(petition.getEntity()==Entity.applicant)
+                    response.set(ResponseObject.applicant, modifyApplicant(petition));
+                if(petition.getEntity()==Entity.company)
+                    response.set(ResponseObject.company, modifyCompany(petition));
+                
                 break;
             case logout:
+                
+                if(petition.getEntity()==Entity.user)
+                    response.set(ResponseObject.user, logoutUser(petition));
+                
                 break;
             case get:
                 break;
@@ -59,11 +81,47 @@ public class DataModel
     {
         User user = new User();
         
-        user.setName(petition.get(PetitionParam.name).toString());
+        user.setUserName(petition.get(PetitionParam.username).toString());
         user.setUserType( UserType.get(petition.get(PetitionParam.userType).toString()));
         user.setPassword(petition.get(PetitionParam.password).toString());
         user.setEmail(petition.get(PetitionParam.email).toString());
         
         return user;
+    }
+    private User loginUser(Petition petition)
+    {
+        User user = new User();
+        
+        user.setUserName(petition.get(PetitionParam.username).toString());
+        user.setPassword(petition.get(PetitionParam.password).toString());
+        
+        return user;
+    }
+    private User logoutUser(Petition petition)
+    {
+        User user = new User();
+        return user;
+    }
+    private User deleteUser(Petition petition)
+    {
+        User user = new User();
+        return user;
+    }
+
+    private Applicant modifyApplicant(Petition petition)
+    {
+        Applicant applicant = new Applicant();
+        
+        applicant.setName(petition.get(PetitionParam.name).toString());
+        
+        return applicant;
+    }
+    private Company modifyCompany(Petition petition)
+    {
+        Company company = new Company();
+        
+        company.setName(petition.get(PetitionParam.name).toString());
+        
+        return company;
     }
 }

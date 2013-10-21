@@ -4,21 +4,22 @@ public enum UserType
 {
     applicant(1),
     company(2),
-    admin(3);
+    admin(3),
+    none(3);
    
-    int userType;
+    int value;
     private UserType(int userType)
     {
-        this.userType = userType;
+        this.value = userType;
     }
     public static UserType get(String string)
     {
         for(UserType userType: UserType.values())
         {
-            if(userType.toString().equals(string))
+            if(String.valueOf(userType.value).equals(string))
                 return userType;
         }
         
-        return UserType.applicant;
+        return UserType.none;
     }
 }

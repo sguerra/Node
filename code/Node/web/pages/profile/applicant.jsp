@@ -1,9 +1,16 @@
-<legend>Aplicante</legend>
+<%@page import="model.entities.Applicant"%>
+<%@page import="model.petition.Entity"%>
+<%
+    Applicant applicant = null;
+    if(session.getAttribute(Entity.applicant.toString())!=null)
+        applicant = (Applicant)session.getAttribute(Entity.applicant.toString());
+%>
+
 <section class="col-lg-6 well">
-    <form>
+    <form method="post" action="applicant.modify">
         <div class="form-group">
             <label>Nombre</label>
-            <input type="text" class="form-control"/>
+            <input name="name" type="text" class="form-control" value="<%=applicant==null?"":applicant.getName()%>"/>
         </div>
         <div class="form-group">
             <label>Edad</label>

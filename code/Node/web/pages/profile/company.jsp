@@ -1,9 +1,16 @@
-<legend>Empresa</legend>
+<%@page import="model.entities.Company"%>
+<%@page import="model.petition.Entity"%>
+<%
+    Company company = null;
+    if(session.getAttribute(Entity.company.toString())!=null)
+        company = (Company)session.getAttribute(Entity.company.toString());
+%>
+
 <section class="col-lg-6 well">
-    <form>
+    <form method="post" action="company.modify">
         <div class="form-group">
             <label>Nombre ó Razón Social</label>
-            <input type="text" class="form-control"/>
+            <input name="name" type="text" class="form-control" value="<%=company==null?"":company.getName()%>"/>
         </div>
         <div class="form-group">
             <label>Teléfono</label>

@@ -1,5 +1,11 @@
+<%@page import="model.petition.Entity"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    if(session.getAttribute(Entity.user.toString())!=null)
+        response.sendRedirect("./prospects.jsp");
+%>
+
 <html>
     <head>
         <jsp:include page="/include/startofpage.jsp"/>

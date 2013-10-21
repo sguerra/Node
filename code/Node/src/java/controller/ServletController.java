@@ -10,8 +10,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.DataModel;
+import model.entities.*;
 import model.response.Response;
+import model.response.ResponseObject;
 
 public class ServletController extends HttpServlet 
 {
@@ -56,12 +59,78 @@ public class ServletController extends HttpServlet
   
         //Dispatch Response
         Response dataResponse = dataModel.execute(petition);
-        this.dispatch(request, dataResponse);
+        this.dispatch(request, response, dataResponse);
     }
     
-    private void dispatch(HttpServletRequest request, Response responses)
+    private void dispatch(HttpServletRequest request,HttpServletResponse response, Response dataResponse) throws ServletException, IOException 
     {
-    
+        Petition petition = dataResponse.getPetition();
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/error.jsp");
+        HttpSession session = request.getSession();
+        
+        switch(petition.getFunction())
+        {
+            case login:
+                
+                if(petition.getEntity()==Entity.user)
+                {
+                    User user = (User)dataResponse.get(ResponseObject.user);
+                    session.setAttribute(Entity.user.toString(), user);
+                    dispatcher = request.getRequestDispatcher("/prospects.jsp");
+                }
+                
+                break;
+            case add:
+                
+                if(petition.getEntity()==Entity.user)
+                {
+                    User user = (User)dataResponse.get(ResponseObject.user);
+                    session.setAttribute(Entity.user.toString(), user);
+                    dispatcher = request.getRequestDispatcher("/profile.jsp");
+                }
+                
+                break;
+            case apply:
+                break;
+            case delete:
+                
+                if(petition.getEntity()==Entity.user)
+                {
+                    session.removeAttribute(Entity.user.toString());
+                    dispatcher = request.getRequestDispatcher("/index.jsp");
+                }
+                
+                break;
+            case modify:
+                
+                if(petition.getEntity()==Entity.applicant)
+                {
+                    session.setAttribute(Entity.applicant.toString(), dataResponse.get(ResponseObject.applicant));
+                    dispatcher = request.getRequestDispatcher("/profile.jsp");
+                }
+                if(petition.getEntity()==Entity.company)
+                {
+                    session.setAttribute(Entity.company.toString(), dataResponse.get(ResponseObject.company));
+                    dispatcher = request.getRequestDispatcher("/profile.jsp");
+                }
+                
+                break;
+            case logout:
+                
+                if(petition.getEntity()==Entity.user)
+                {
+                    session.removeAttribute(Entity.user.toString());
+                    dispatcher = request.getRequestDispatcher("/index.jsp");
+                }
+                
+                break;
+            case get:
+                break;
+            default:
+                return;
+        }
+        
+        dispatcher.forward(request, response);
     }
     
 
@@ -106,7 +175,7 @@ public class ServletController extends HttpServlet
     
     protected void sendError(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
-        RequestDispatcher distatcher = request.getRequestDispatcher("pages/error.jsp");
+        RequestDispatcher distatcher = request.getRequestDispatcher("/pages/error.jsp");
         distatcher.forward(request, response);
     }
 }
