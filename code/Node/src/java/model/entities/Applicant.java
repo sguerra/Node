@@ -23,5 +23,22 @@ public class Applicant extends User implements java.io.Serializable
     {
         return this.applications;
     }
-    
+    public void setSkill(List<Skill> skills){
+        this.skills = skills;
+    }
+    public List<Skill> getSkill(){
+        return this.skills;
+    }
+    public void setSuggested(List<Vacancy> suggested){
+        this.suggested = suggested;
+    }
+    public List<Vacancy> getSuggested(){
+        return this.suggested;
+    }
+    public void setProspects(List<Vacancy> prospects){
+        this.prospects = prospects;
+    }
+    public List<Vacancy> getProspects(){
+        return this.prospects;
+    }
 }

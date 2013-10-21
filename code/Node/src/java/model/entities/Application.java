@@ -19,5 +19,23 @@ public class Application implements java.io.Serializable
     {
         return this.applicationId;
     }
+    public void setEmployment(Employment employment){
+        this.employment = employment;
+    }
+    public Employment getEmployment(){
+        return this.employment;
+    }
+    public void setSalary(double salary){
+        this.salary = salary;
+    }
+    public double getSalary(){
+        return this.salary;
+    }
+    public void serDescription(String description){
+        this.description = description;
+    }
+    public String getDescription(){
+        return this.description;
+    }
     
 }

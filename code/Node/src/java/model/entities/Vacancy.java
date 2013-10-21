@@ -22,5 +22,28 @@ public class Vacancy implements java.io.Serializable
     {
         return vacancyId;
     }
-    
+    public void setEmploymet(Employment employment){
+        this.employment = employment;
+    }
+    public Employment getEmployment(){
+        return this.employment;
+    }
+    public void setSalary(double salary){
+        this.salary = salary;
+    }
+    public double getSalary(){
+        return this.salary;
+    }
+    public void setSkill(List<Skill> skills){
+        this.skills = skills;
+    }
+    public List<Skill> getSkill(){
+        return this.skills;
+    }
+    public void setDescription(String description){
+        this.description = description;
+    }
+    public String getDescription(){
+        return this.description;
+    }
 }

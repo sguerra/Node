@@ -21,4 +21,16 @@ public class Company extends User implements java.io.Serializable
     {
         return this.vacancies;
     }
+    public void setSuggested(List<Applicant> suggested){
+        this.suggested = suggested;
+    }
+    public List<Applicant> getSuggested(){
+        return this.suggested;
+    }
+    public void setProspects(List<Applicant> prospects){
+        this.prospects = prospects;
+    }
+    public List<Applicant> getProspects(){
+        return this.prospects;
+    }
 }
