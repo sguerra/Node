@@ -35,7 +35,7 @@ public class ServletController extends HttpServlet
     {
         String fullUrl = request.getRequestURL().toString();
         
-        // Check Separators
+        // Pattern Separators
         if(fullUrl.indexOf(URL_SEPARATOR)<=0)
         {
             this.sendError(request, response);

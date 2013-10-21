@@ -5,22 +5,24 @@ public class Skill implements java.io.Serializable
     private int skillId;
     private String name;
     
-    public Skill(){
+    public Skill()
+    {
     }
     
-    public void setskillId(int skillId){
+    public void setSkillId(int skillId)
+    {
         this.skillId= skillId;
     }
-    
-    public int getskillId(){
+    public int getSkillId()
+    {
         return this.skillId;
     }
     
-    public void setname(String name){
+    public void setName(String name)
+    {
         this.name= name;
     }
-    
-    public String getname(){
+    public String getName(){
         return this.name;
     }
 }
