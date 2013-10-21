@@ -14,15 +14,15 @@
         </div>
         <div class="form-group">
             <label>Teléfono</label>
-            <input type="text" class="form-control"/>
+            <input name="phone" type="text" class="form-control"  value="<%=company==null?"":company.getPhone()%>"/>
         </div>
         <div class="form-group">
             <label>Dirección</label>
-            <input type="text" class="form-control"/>
+            <input name="address" type="text" class="form-control" value="<%=company==null?"":company.getAddress()%>"/>
         </div>
         <div class="form-group">
             <label>Descripción</label>
-            <input type="text" class="form-control"/>
+            <input name="description" type="text" class="form-control" value="<%=company==null?"":company.getDescription()%>"/>
         </div>
         <div class="form-group">
             <label>Vacantes</label>
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             <label>Contacto</label>
-            <input type="text" class="form-control"/>
+            <input name="contact" type="text" class="form-control" value="<%=company==null?"":company.getContact()%>"/>
         </div>
         <button class="btn btn-info pull-right">guardar</button>
     </form>

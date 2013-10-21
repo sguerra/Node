@@ -76,7 +76,11 @@ public class ServletController extends HttpServlet
                 {
                     User user = (User)dataResponse.get(ResponseObject.user);
                     session.setAttribute(Entity.user.toString(), user);
-                    dispatcher = request.getRequestDispatcher("/prospects.jsp");
+                    
+                    if(user.getUserType()==UserType.admin)
+                        dispatcher = request.getRequestDispatcher("/admin.jsp");
+                    else
+                        dispatcher = request.getRequestDispatcher("/prospects.jsp");
                 }
                 
                 break;
@@ -97,6 +101,8 @@ public class ServletController extends HttpServlet
                 if(petition.getEntity()==Entity.user)
                 {
                     session.removeAttribute(Entity.user.toString());
+                    session.removeAttribute(Entity.applicant.toString());
+                    session.removeAttribute(Entity.company.toString());
                     dispatcher = request.getRequestDispatcher("/index.jsp");
                 }
                 
@@ -120,6 +126,8 @@ public class ServletController extends HttpServlet
                 if(petition.getEntity()==Entity.user)
                 {
                     session.removeAttribute(Entity.user.toString());
+                    session.removeAttribute(Entity.applicant.toString());
+                    session.removeAttribute(Entity.company.toString());
                     dispatcher = request.getRequestDispatcher("/index.jsp");
                 }
                 

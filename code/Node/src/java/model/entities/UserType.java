@@ -5,7 +5,7 @@ public enum UserType
     applicant(1),
     company(2),
     admin(3),
-    none(3);
+    user(3);
    
     int value;
     private UserType(int userType)
@@ -20,6 +20,6 @@ public enum UserType
                 return userType;
         }
         
-        return UserType.none;
+        return UserType.user;
     }
 }

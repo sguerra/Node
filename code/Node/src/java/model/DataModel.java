@@ -90,10 +90,33 @@ public class DataModel
     }
     private User loginUser(Petition petition)
     {
+        String username = petition.get(PetitionParam.username).toString();
         User user = new User();
         
-        user.setUserName(petition.get(PetitionParam.username).toString());
+        user.setUserName(username);
         user.setPassword(petition.get(PetitionParam.password).toString());
+        
+        if(username.equals("applicant"))
+        {
+            user.setName("Señor Aplicante");
+            user.setDescription("Ing. Sistemas");
+            user.setUserType(UserType.applicant);
+            user.setEmail("applicant@mail.com");
+        }
+        else if(username.equals("company"))
+        {
+            user.setName("Empresa CO");
+            user.setDescription("Empresa dedicada al desarrollo de Sistemas");
+            user.setUserType(UserType.company);
+            user.setEmail("company@mail.com");
+            
+        }else if(username.equals("admin"))
+        {
+            user.setName("Mr. Administrador");
+            user.setDescription("Ing. Sistemas también");
+            user.setUserType(UserType.admin);
+            user.setEmail("admin@mail.com");
+        }
         
         return user;
     }
@@ -113,6 +136,10 @@ public class DataModel
         Applicant applicant = new Applicant();
         
         applicant.setName(petition.get(PetitionParam.name).toString());
+        applicant.setPhone(petition.get(PetitionParam.phone).toString());
+        applicant.setAddress(petition.get(PetitionParam.address).toString());
+        applicant.setDescription(petition.get(PetitionParam.description).toString());
+        applicant.setContact(petition.get(PetitionParam.contact).toString());
         
         return applicant;
     }
@@ -121,6 +148,10 @@ public class DataModel
         Company company = new Company();
         
         company.setName(petition.get(PetitionParam.name).toString());
+        company.setPhone(petition.get(PetitionParam.phone).toString());
+        company.setAddress(petition.get(PetitionParam.address).toString());
+        company.setDescription(petition.get(PetitionParam.description).toString());
+        company.setContact(petition.get(PetitionParam.contact).toString());
         
         return company;
     }

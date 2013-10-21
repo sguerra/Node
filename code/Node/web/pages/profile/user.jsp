@@ -5,7 +5,7 @@
     User user = ((User)session.getAttribute(Entity.user.toString()));
 %>
 
-<legend><%=user.getUserType()==UserType.applicant?"Aplicante":"Empresa"%></legend>
+<legend><%=user.getUserType()==UserType.applicant?"Aplicante":user.getUserType()==UserType.company?"Empresa":"Admin"%></legend>
 
 <form method="post" action="user.logout">
     <div class="form-group">

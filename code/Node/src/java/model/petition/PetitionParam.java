@@ -6,5 +6,10 @@ public enum PetitionParam
     userType,
     username,
     password,
-    email
+    email,
+    phone,
+    address,
+    description,
+    contact,
+    age
 }
