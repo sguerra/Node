@@ -2,6 +2,7 @@ package controller;
 
 import model.petition.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +32,7 @@ public class ServletController extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
+        
     }
 
     @Override
@@ -38,22 +40,14 @@ public class ServletController extends HttpServlet
     {
         String fullUrl = request.getRequestURL().toString();
         
-        // Pattern Separators
-        if(fullUrl.indexOf(URL_SEPARATOR)<=0)
+        if(this.ValidPattern(fullUrl))
         {
             this.sendError(request, response);
             return;
         }
-        String [] splitUrl = fullUrl.split(URL_SEPARATOR);
- 
-        String urlPattern = splitUrl[splitUrl.length-1];
-        if(urlPattern.indexOf(INS_SEPARATOR)<=0)
-        {
-            this.sendError(request, response);
-            return;
-        }
-      
+        
         // Parse Petition
+        String urlPattern = getUrlPattern(fullUrl);
         Map<PetitionParam, Object> params = mapParemeters(request);
         Petition petition = parsePetition(urlPattern, params);
   
@@ -61,6 +55,26 @@ public class ServletController extends HttpServlet
         Response dataResponse = dataModel.execute(petition);
         this.dispatch(request, response, dataResponse);
     }
+    
+    private boolean ValidPattern(String fullUrl)
+    {
+        // Pattern Separators
+        if(fullUrl.indexOf(URL_SEPARATOR)<=0)
+            return false;
+        String urlPattern = getUrlPattern(fullUrl);
+        if(urlPattern.indexOf(INS_SEPARATOR)<=0)
+            return false;
+      
+        return true;
+    }
+    private String getUrlPattern(String fullUrl)
+    {
+        String [] splitUrl = fullUrl.split(URL_SEPARATOR);
+        String urlPattern = splitUrl[splitUrl.length-1];
+        
+        return urlPattern;
+    }
+    
     
     private void dispatch(HttpServletRequest request,HttpServletResponse response, Response dataResponse) throws ServletException, IOException 
     {
@@ -139,6 +153,26 @@ public class ServletController extends HttpServlet
         }
         
         dispatcher.forward(request, response);
+    }
+    
+    private void dispatchGetJSON(HttpServletRequest request,HttpServletResponse response, Response dataResponse) throws ServletException, IOException
+    {
+        PrintWriter out = response.getWriter();
+        try 
+        {
+            switch(dataResponse.getPetition().getEntity()){
+                case skill:
+                    
+                    break;
+                case employment:
+                    
+                    break;
+                default:
+                    break;
+            }
+        } finally {
+            out.close();
+        }
     }
     
 

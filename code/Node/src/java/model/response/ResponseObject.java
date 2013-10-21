@@ -9,5 +9,7 @@ public enum ResponseObject
     vacancies,
     prospects,
     applicants,
-    companies
+    companies,
+    skills,
+    employments
 }

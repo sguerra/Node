@@ -1,7 +1,11 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.entities.Applicant;
 import model.entities.Company;
+import model.entities.Employment;
+import model.entities.Skill;
 import model.entities.User;
 import model.entities.UserType;
 import model.petition.Entity;
@@ -68,6 +72,12 @@ public class DataModel
                 
                 break;
             case get:
+                
+                if(petition.getEntity()==Entity.skill)
+                    response.set(ResponseObject.skills, getSkill(petition));
+                if(petition.getEntity()==Entity.employment)
+                    response.set(ResponseObject.skills, getEmployment(petition));
+                
                 break;
             default:
                 response.setStatus(Status.PetitionNotFound);
@@ -155,4 +165,55 @@ public class DataModel
         
         return company;
     }
+    
+    private String getSkill(Petition petition)
+    {
+        List<Skill> skills = new ArrayList<Skill>();
+        
+        Skill skill = new Skill();
+        skill.setSkillId(1);
+        skill.setName("Idioma Ingles");
+        skills.add(skill);
+        
+        skill.setSkillId(2);
+        skill.setName("Idioma Alemán");
+        skills.add(skill);
+        
+        skill.setSkillId(3);
+        skill.setName("Idioma Francés");
+        skills.add(skill);
+        
+        skill.setSkillId(4);
+        skill.setName("Lenguaje Java");
+        skills.add(skill);
+        
+        skill.setSkillId(5);
+        skill.setName("Lenguaje C#");
+        skills.add(skill);
+        
+        return Skill.toJsonArray(skills);
+    }
+    
+    private String getEmployment(Petition petition)
+    {
+        List<Employment> employments = new ArrayList<Employment>();
+        
+        Employment employment = new Employment();
+        
+        employment.setEmploymentId(1);
+        employment.setName("Programador");
+        
+        employment.setEmploymentId(2);
+        employment.setName("Soporte Técnico");
+        
+        employment.setEmploymentId(3);
+        employment.setName("Administrador de Redes");
+        
+        employment.setEmploymentId(4);
+        employment.setName("Lider de Poyectos");
+        
+        return Employment.toJsonArray(employments);
+    }
+    
+    
 }

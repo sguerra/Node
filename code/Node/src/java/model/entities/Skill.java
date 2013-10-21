@@ -1,5 +1,7 @@
 package model.entities;
 
+import java.util.List;
+
 public class Skill implements java.io.Serializable
 {
     private int skillId;
@@ -24,5 +26,18 @@ public class Skill implements java.io.Serializable
     }
     public String getName(){
         return this.name;
+    }
+        
+    @Override
+    public String toString()
+    {
+        return "{\"skillId\":"+this.skillId+",\"name\":\""+this.name+"}\"";
+    }
+    public static String toJsonArray(List<Skill> array)
+    {
+        String json = "[";         
+        for(Skill skill : array) 
+                json += skill.toString();
+        return json+"]";
     }
 }
