@@ -1,0 +1,23 @@
+\newpage
+\section{Patrones de Url}
+
+\vspace{1mm}
+
+En la aplicación para la segunda fase del desarrollo se manejarán los siguientes Patrones de Url para poder responder a cada una de las peticiones.
+
+\vspace{1mm}
+
+\begin{tabular}{|c||c||c|p{8cm}|} 
+	\hline
+		\cellcolor{Black}\textcolor{White}{\textbf{Entidad}} & & \cellcolor{Black}\textcolor{White}{\textbf{Función} & \cellcolor{Black}\textcolor{White}{\textbf{Descripción}}} & \cellcolor{Black}\textcolor{White}{\textbf{Acción de respuesta}}\\ 
+	\hline
+		 \multirow{5}{user} & \multirow{7}{ \. } & add & Agregar Usuario & Redirige a pantalla de Perfil y establece variable de sesión de usuario\\
+												& login & Inicia Sesión Usuario & Redirige a pantalla Principal  y establece variable de sesión de usuario\\
+												& logout & Cierra Sesión Usuario & Redirige a pantalla de Inicio y elimina variable de sesión de usuario\\
+												& modify &  Guarda cambios a Usuario & Permanece en pantalla de Perfil, guarda usuario y actializa su variable de sesión\\
+												& delete &  Elimina Usuario & Redirige a pantalla de Inicio, elimina usuario y remueve su variable de sesión\\
+		\hline
+		 skill & 					& \multirow{2} { get } & Obtener Habilidades & Modifica header para regresar JSON de objetos skill \{skillId : ... name : ...\}\\
+		 employment & 										& Obtener Empleos &  Modifica header para regresar JSON de objetos skill \{skillId : ... name : ...\} \\
+	\hline
+\end{tabular}
