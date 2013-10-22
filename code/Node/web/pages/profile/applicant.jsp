@@ -1,3 +1,4 @@
+<%@page import="model.entities.UserType"%>
 <%@page import="model.entities.User"%>
 <%@page import="model.entities.Applicant"%>
 <%@page import="model.petition.Entity"%>
@@ -9,9 +10,11 @@
 
 <section class="col-lg-6 well">
     <form method="post" action="applicant.modify">
-        <input name="userId" type="hidden" value="<%=applicant==null?"":applicant.getUserId()%>">
-        <input name="username" type="hidden" value="<%=applicant==null?"":applicant.getUserName()%>">
-        <input name="userType" type="hidden" value="<%=applicant==null?"":applicant.getUserType()%>">
+        <input name="userId" type="hidden" value="<%=applicant.getUserId()%>">
+        <input name="username" type="hidden" value="<%=applicant.getUserName()%>">
+        <input name="password" type="hidden" value="<%=applicant.getPassword()%>">
+        <input name="userType" type="hidden" value="<%=applicant.getUserType()%>">
+        <input name="email" type="hidden" value="<%=applicant.getEmail()%>">
         <div class="form-group">
             <label>Nombre</label>
             <input name="name" type="text" class="form-control" value="<%=applicant==null?"":applicant.getName()%>"/>

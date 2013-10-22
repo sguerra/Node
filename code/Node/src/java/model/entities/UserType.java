@@ -22,4 +22,10 @@ public enum UserType
         
         return UserType.user;
     }
+    
+    @Override
+    public String toString()
+    {
+        return String.valueOf(this.value);
+    }
 }

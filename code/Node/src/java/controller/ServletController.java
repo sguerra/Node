@@ -20,60 +20,37 @@ import model.response.Status;
 
 public class ServletController extends HttpServlet 
 {
-    private final String URL_SEPARATOR = "/";
-    private final String INS_SEPARATOR = ".";
     private DataModel dataModel;
+    private PetitionFactory petitionFactory;
     
     @Override
     public void init()
     {
         dataModel = DataModel.getInstance();
+        petitionFactory = PetitionFactory.getInstance();
     }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
-        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         String fullUrl = request.getRequestURL().toString();
-        
-        if(!this.ValidPattern(fullUrl))
+       
+        if(!petitionFactory.ValidPattern(fullUrl))
         {
             this.sendError(request, response);
             return;
         }
         
-        // Parse Petition
-        String urlPattern = getUrlPattern(fullUrl);
-        Map<PetitionParam, Object> params = mapParemeters(request);
-        Petition petition = parsePetition(urlPattern, params);
-  
+        Petition petition = petitionFactory.newPetition(request, fullUrl);
+        
         //Dispatch Response
         Response dataResponse = dataModel.execute(petition);
         this.dispatch(request, response, dataResponse);
-    }
-    
-    private boolean ValidPattern(String fullUrl)
-    {
-        // Pattern Separators
-        if(fullUrl.indexOf(URL_SEPARATOR)<=0)
-            return false;
-        String urlPattern = getUrlPattern(fullUrl);
-        if(urlPattern.indexOf(INS_SEPARATOR)<=0)
-            return false;
-      
-        return true;
-    }
-    private String getUrlPattern(String fullUrl)
-    {
-        String [] splitUrl = fullUrl.split(URL_SEPARATOR);
-        String urlPattern = splitUrl[splitUrl.length-1];
-        
-        return urlPattern;
     }
     
     
@@ -87,23 +64,19 @@ public class ServletController extends HttpServlet
         {
             case login:
                 
-                if(petition.getEntity()==Entity.user)
-                {
-                    if(dataResponse.getStatus()== Status.Succes)
-                    {   
-                        User user = (User)dataResponse.get(ResponseObject.user);
-                        session.setAttribute(Entity.user.toString(), user);
+                if(dataResponse.getStatus()== Status.Succes)
+                {   
+                    User user = (User)dataResponse.get(ResponseObject.user);
+                    session.setAttribute(Entity.user.toString(), user);
 
-                        if(user.getUserType()==UserType.admin)
-                            dispatcher = request.getRequestDispatcher("/admin.jsp");
-                        else
-                            dispatcher = request.getRequestDispatcher("/prospects.jsp");
-                    }
+                    if(user.getUserType()==UserType.admin)
+                        dispatcher = request.getRequestDispatcher("/admin.jsp");
                     else
-                    {
-                        dispatcher = request.getRequestDispatcher("/index.jsp");
-                    }
-                        
+                        dispatcher = request.getRequestDispatcher("/prospects.jsp");
+                }
+                else
+                {
+                    dispatcher = request.getRequestDispatcher("/index.jsp");
                 }
                 
                 break;
@@ -124,36 +97,24 @@ public class ServletController extends HttpServlet
                 if(petition.getEntity()==Entity.user)
                 {
                     session.removeAttribute(Entity.user.toString());
-                    session.removeAttribute(Entity.applicant.toString());
-                    session.removeAttribute(Entity.company.toString());
                     dispatcher = request.getRequestDispatcher("/index.jsp");
                 }
                 
                 break;
             case modify:
                 
-                if(petition.getEntity()==Entity.applicant)
+                if(petition.getEntity()==Entity.applicant || petition.getEntity()==Entity.company)
                 {
-                    session.setAttribute(Entity.user.toString(), dataResponse.get(ResponseObject.applicant));
-                    dispatcher = request.getRequestDispatcher("/profile.jsp");
-                }
-                if(petition.getEntity()==Entity.company)
-                {
-                    session.setAttribute(Entity.user.toString(), dataResponse.get(ResponseObject.company));
+                    session.setAttribute(Entity.user.toString(), dataResponse.get(ResponseObject.user));
                     dispatcher = request.getRequestDispatcher("/profile.jsp");
                 }
                 
                 break;
             case logout:
                 
-                if(petition.getEntity()==Entity.user)
-                {
-                    session.removeAttribute(Entity.user.toString());
-                    session.removeAttribute(Entity.applicant.toString());
-                    session.removeAttribute(Entity.company.toString());
-                    dispatcher = request.getRequestDispatcher("/index.jsp");
-                }
-                
+                session.removeAttribute(Entity.user.toString());
+                dispatcher = request.getRequestDispatcher("/index.jsp");
+                    
                 break;
             case get:
                 
@@ -173,16 +134,13 @@ public class ServletController extends HttpServlet
         PrintWriter out = response.getWriter();
         try 
         {
-            switch(dataResponse.getPetition().getEntity()){
+            switch(dataResponse.getPetition().getEntity())
+            {
                 case skill:
-                    
                     out.write(dataResponse.get(ResponseObject.skills).toString());
-                    
                     break;
                 case employment:
-                    
                     out.write(dataResponse.get(ResponseObject.employments).toString());
-                    
                     break;
                 default:
                     break;
@@ -191,43 +149,7 @@ public class ServletController extends HttpServlet
             out.close();
         }
     }
-
-    private Map<PetitionParam,Object> mapParemeters(HttpServletRequest request)
-    {
-        Map<PetitionParam,Object> map = new HashMap<PetitionParam,Object>();
-        
-        Enumeration<String> names = request.getParameterNames();
-        while(names.hasMoreElements())
-        {
-            String name = names.nextElement();
-            map.put(PetitionParam.valueOf(name), request.getParameter(name));
-        }
-        
-        return map;
-    }
-    private Petition parsePetition(String urlPattern, Map<PetitionParam,Object> params)
-    {
-        Entity entity = parseEntity(urlPattern);
-        Function function = parseFunction(urlPattern);
-        Petition petition = new Petition(entity, function);
-        petition.setParams(params);
-       
-        return petition;
-    }
-    private Function parseFunction(String urlPattern)
-    {
-        int sub_index = urlPattern.indexOf(INS_SEPARATOR);
-        String function = urlPattern.substring(sub_index +1,urlPattern.length());
-        
-        return Function.valueOf(function);
-    }
-    private Entity parseEntity(String urlPattern)
-    {
-        int sub_index = urlPattern.indexOf(INS_SEPARATOR);
-        String entity = urlPattern.substring(0,sub_index);
-        
-        return Entity.valueOf(entity);
-    }
+    
     protected void sendError(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         RequestDispatcher distatcher = request.getRequestDispatcher("/pages/error.jsp");

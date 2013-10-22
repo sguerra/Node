@@ -19,8 +19,9 @@ public class DummyObjects
         registered = new ArrayList<User>();
         
         User user = new User();
+        user.setUserId(1);
         user.setUserName("applicant");
-        user.setName("Señor Aplicante");
+        user.setName("Sir Aplicante");
         user.setPassword("app");
         user.setDescription("Ing. Sistemas");
         user.setUserType(UserType.applicant);
@@ -29,6 +30,7 @@ public class DummyObjects
         registered.add(user);
        
         user = new Company();
+        user.setUserId(2);
         user.setUserName("company");
         user.setName("Empresa CO");
         user.setPassword("co");
@@ -39,6 +41,7 @@ public class DummyObjects
         registered.add(user);
        
         user = new User();
+        user.setUserId(3);
         user.setUserName("admin");
         user.setName("Mr. Administrador");
         user.setPassword("admin");
@@ -49,6 +52,37 @@ public class DummyObjects
         registered.add(user);
        
         return registered;
+    }
+    public static void removeRegisteredUser(User user)
+    {
+        for(User u : registered)
+        {
+            if(u.getUserId()==user.getUserId())
+            {
+                registered.remove(u);
+                return;
+            }
+        }
+    }
+    public static void addRegisteredUser(User user)
+    {
+        if(registered==null)
+            registered = new ArrayList<User>();
+        
+        registered.add(user);
+    }
+    public static void updateRegisteredUser(User user)
+    {
+        int i = 0;
+        for(User u : registered)
+        {
+            if(u.getUserId()==user.getUserId())
+            {
+                registered.set(i,user);
+                return;
+            }
+            i++;
+        }
     }
     
     public static List<Skill> getSkills()
@@ -79,8 +113,7 @@ public class DummyObjects
         skills.add(skill);
         
         return skills;
-    }
-    
+    } 
     public static List<Employment> getEmployments()
     {
         if(employments!=null)
