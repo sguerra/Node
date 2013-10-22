@@ -1,13 +1,18 @@
-<%@page import="model.entities.Company"%>
+<%@page import="model.entities.User"%>
 <%@page import="model.petition.Entity"%>
 <%
-    Company company = null;
-    if(session.getAttribute(Entity.company.toString())!=null)
-        company = (Company)session.getAttribute(Entity.company.toString());
+    User company = null;
+    if(session.getAttribute(Entity.user.toString())!=null)
+        company = (User)session.getAttribute(Entity.user.toString());
 %>
 
 <section class="col-lg-6 well">
     <form method="post" action="company.modify">
+        <input name="userId" type="hidden" value="<%=company.getUserId()%>">
+        <input name="username" type="hidden" value="<%=company.getUserName()%>">
+        <input name="password" type="hidden" value="<%=company.getPassword()%>">
+        <input name="userType" type="hidden" value="<%=company.getUserType()%>">
+        <input name="email" type="hidden" value="<%=company.getEmail()%>">
         <div class="form-group">
             <label>Nombre ó Razón Social</label>
             <input name="name" type="text" class="form-control" value="<%=company==null?"":company.getName()%>"/>

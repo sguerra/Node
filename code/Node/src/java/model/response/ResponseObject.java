@@ -11,5 +11,6 @@ public enum ResponseObject
     applicants,
     companies,
     skills,
-    employments
+    employments,
+    users
 }

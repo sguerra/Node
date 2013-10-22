@@ -122,6 +122,6 @@ public class User implements java.io.Serializable
     public boolean equals(Object obj) 
     {   
         User user = (User)obj;
-        return this.getUserName().equals(user.getUserName())&& this.getPassword().equals(user.getPassword());
+        return this.getUserName().equals(user.getUserName()) && this.getPassword().equals(user.getPassword());
     }
 }

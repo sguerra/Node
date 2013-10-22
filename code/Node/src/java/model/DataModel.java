@@ -64,8 +64,10 @@ public class DataModel
                 break;
             case modify:
                 
-                if(petition.getEntity()==Entity.applicant||petition.getEntity()==Entity.company)
-                    response.set(ResponseObject.applicant, modifyUser(petition));
+                if(petition.getEntity()==Entity.applicant)
+                    response.set(ResponseObject.user, modifyApplicant(petition));
+                if(petition.getEntity()==Entity.company)
+                    response.set(ResponseObject.user, modifyCompany(petition));
                 
                 break;
             case logout:
@@ -94,10 +96,13 @@ public class DataModel
     {
         User user = new User();
         
+        user.setUserId(Integer.parseInt(String.valueOf(Math.round(Math.random()*1000))));
         user.setUserName(petition.get(PetitionParam.username).toString());
         user.setUserType( UserType.get(petition.get(PetitionParam.userType).toString()));
         user.setPassword(petition.get(PetitionParam.password).toString());
         user.setEmail(petition.get(PetitionParam.email).toString());
+        
+        DummyObjects.addRegisteredUser(user);
         
         return user;
     }
@@ -125,23 +130,48 @@ public class DataModel
     private User deleteUser(Petition petition)
     {
         User user = new User();
+        user.setUserId(Integer.parseInt(petition.get(PetitionParam.userId).toString()));
+        DummyObjects.removeRegisteredUser(user);
         return user;
     }
 
-    private User modifyUser(Petition petition)
+    private User modifyApplicant(Petition petition)
     {
-        User user = new Applicant();
+        Applicant user = new Applicant();
         
         user.setUserId(Integer.parseInt(petition.get(PetitionParam.userId).toString()));
         user.setUserName(petition.get(PetitionParam.username).toString());
+        user.setPassword(petition.get(PetitionParam.password).toString());
         user.setUserType(UserType.get(petition.get(PetitionParam.userType).toString()));
         user.setName(petition.get(PetitionParam.name).toString());
         user.setPhone(petition.get(PetitionParam.phone).toString());
-        user.setAge(Integer.parseInt(petition.get(PetitionParam.age).toString()));
+        if(!petition.get(PetitionParam.age).toString().equals(""))
+            user.setAge(Integer.parseInt(petition.get(PetitionParam.age).toString()));
         user.setAddress(petition.get(PetitionParam.address).toString());
         user.setDescription(petition.get(PetitionParam.description).toString());
         user.setContact(petition.get(PetitionParam.contact).toString());
+        user.setEmail(petition.get(PetitionParam.email).toString());
         
+        DummyObjects.updateRegisteredUser(user);
+        
+        return user;
+    }
+    private User modifyCompany(Petition petition)
+    {
+        Company user = new Company();
+        
+        user.setUserId(Integer.parseInt(petition.get(PetitionParam.userId).toString()));
+        user.setUserName(petition.get(PetitionParam.username).toString());
+        user.setPassword(petition.get(PetitionParam.password).toString());
+        user.setUserType(UserType.get(petition.get(PetitionParam.userType).toString()));
+        user.setName(petition.get(PetitionParam.name).toString());
+        user.setPhone(petition.get(PetitionParam.phone).toString());
+        user.setAddress(petition.get(PetitionParam.address).toString());
+        user.setDescription(petition.get(PetitionParam.description).toString());
+        user.setContact(petition.get(PetitionParam.contact).toString());
+        user.setEmail(petition.get(PetitionParam.email).toString());
+        
+        DummyObjects.updateRegisteredUser(user);
         return user;
     }
     
@@ -150,7 +180,6 @@ public class DataModel
         List<Skill> skills = DummyObjects.getSkills();
         return Skill.toJsonArray(skills);
     }
-    
     private String getEmployment(Petition petition)
     {
         List<Employment> employments = DummyObjects.getEmployments();

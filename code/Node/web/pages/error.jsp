@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-offset-2 col-md-8 content-error">
             <div class="msg-error">
-                <h1> Error :  <h2><i><!--%=exception.getMessage()%--> </i></h2></h1>
+                <h1> Error :  <h2><i><%=exception!=null?exception.getMessage():""%> </i></h2></h1>
             </div>
         </div>
     </div>
