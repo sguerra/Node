@@ -29,7 +29,7 @@
             <select class="form-control" multiple="true">
             </select>
             <br>
-            <div class="btn btn-default" class>agregar</div>
+            <div class="btn btn-default btn-get-employment" class>agregar</div>
             <div class="btn btn-default" class>quitar</div>
         </div>
         <div class="form-group">

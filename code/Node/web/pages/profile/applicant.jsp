@@ -1,13 +1,17 @@
+<%@page import="model.entities.User"%>
 <%@page import="model.entities.Applicant"%>
 <%@page import="model.petition.Entity"%>
 <%
-    Applicant applicant = null;
-    if(session.getAttribute(Entity.applicant.toString())!=null)
-        applicant = (Applicant)session.getAttribute(Entity.applicant.toString());
+    User applicant = null;
+    if(session.getAttribute(Entity.user.toString())!=null)
+        applicant = (User)session.getAttribute(Entity.user.toString());
 %>
 
 <section class="col-lg-6 well">
     <form method="post" action="applicant.modify">
+        <input name="userId" type="hidden" value="<%=applicant==null?"":applicant.getUserId()%>">
+        <input name="username" type="hidden" value="<%=applicant==null?"":applicant.getUserName()%>">
+        <input name="userType" type="hidden" value="<%=applicant==null?"":applicant.getUserType()%>">
         <div class="form-group">
             <label>Nombre</label>
             <input name="name" type="text" class="form-control" value="<%=applicant==null?"":applicant.getName()%>"/>
@@ -33,7 +37,7 @@
             <select class="form-control" multiple="true">
             </select>
             <br>
-            <div class="btn btn-default" class>agregar</div>
+            <div class="btn btn-default btn-get-skill" class>agregar</div>
             <div class="btn btn-default" class>quitar</div>
         </div>
         <div class="form-group">

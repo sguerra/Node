@@ -31,13 +31,13 @@ public class Employment implements java.io.Serializable
     @Override
     public String toString()
     {
-        return "{\"employmetId\":"+this.employmetId+",\"name\":\""+this.name+"}\"";
+        return "{\"employmentId\":"+this.employmetId+",\"name\":\""+this.name+"\"}";
     }
     public static String toJsonArray(List<Employment> array)
     {
         String json = "[";         
         for(Employment employment : array) 
-                json += employment.toString();
-        return json+"]";
+                json += "," + employment.toString();
+        return json.replaceFirst(",","")+"]";
     }
 }

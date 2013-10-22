@@ -31,13 +31,13 @@ public class Skill implements java.io.Serializable
     @Override
     public String toString()
     {
-        return "{\"skillId\":"+this.skillId+",\"name\":\""+this.name+"}\"";
+        return "{\"skillId\":"+this.skillId+",\"name\":\""+this.name+"\"}";
     }
     public static String toJsonArray(List<Skill> array)
     {
         String json = "[";         
         for(Skill skill : array) 
-                json += skill.toString();
-        return json+"]";
+                json += ","+skill.toString();
+        return json.replaceFirst(",", "")+"]";
     }
 }

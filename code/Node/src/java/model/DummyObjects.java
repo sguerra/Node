@@ -8,6 +8,8 @@ import model.entities.*;
 public class DummyObjects 
 {
     private static List<User> registered;
+    private static List<Skill> skills;
+    private static List<Employment> employments;
     
     public static List<User> getRegisteredUsers()
     {
@@ -26,7 +28,7 @@ public class DummyObjects
         
         registered.add(user);
        
-        user = new User();
+        user = new Company();
         user.setUserName("company");
         user.setName("Empresa CO");
         user.setPassword("co");
@@ -47,5 +49,65 @@ public class DummyObjects
         registered.add(user);
        
         return registered;
+    }
+    
+    public static List<Skill> getSkills()
+    {
+        if(skills!=null)
+            return skills;
+            
+        skills = new ArrayList<Skill>();
+        Skill skill = new Skill();
+        skill.setSkillId(1);
+        skill.setName("Idioma Ingles");
+        skills.add(skill);
+        
+        skill.setSkillId(2);
+        skill.setName("Idioma Alemán");
+        skills.add(skill);
+        
+        skill.setSkillId(3);
+        skill.setName("Idioma Francés");
+        skills.add(skill);
+        
+        skill.setSkillId(4);
+        skill.setName("Lenguaje Java");
+        skills.add(skill);
+        
+        skill.setSkillId(5);
+        skill.setName("Lenguaje C#");
+        skills.add(skill);
+        
+        return skills;
+    }
+    
+    public static List<Employment> getEmployments()
+    {
+        if(employments!=null)
+            return employments;
+            
+        employments = new ArrayList<Employment>();
+        
+        Employment employment = new Employment();
+        employment.setEmploymentId(1);
+        employment.setName("Programador");
+        employments.add(employment);
+        
+        employment = new Employment();
+        employment.setEmploymentId(2);
+        employment.setName("Soporte Técnico");
+        employments.add(employment);
+        
+        employment = new Employment();
+        employment.setEmploymentId(3);
+        employment.setName("Administrador de Redes");
+        employments.add(employment);
+        
+        employment = new Employment();
+        employment.setEmploymentId(4);
+        employment.setName("Lider de Poyectos");
+        employments.add(employment);
+        
+        return employments;
     }
 }

@@ -134,12 +134,12 @@ public class ServletController extends HttpServlet
                 
                 if(petition.getEntity()==Entity.applicant)
                 {
-                    session.setAttribute(Entity.applicant.toString(), dataResponse.get(ResponseObject.applicant));
+                    session.setAttribute(Entity.user.toString(), dataResponse.get(ResponseObject.applicant));
                     dispatcher = request.getRequestDispatcher("/profile.jsp");
                 }
                 if(petition.getEntity()==Entity.company)
                 {
-                    session.setAttribute(Entity.company.toString(), dataResponse.get(ResponseObject.company));
+                    session.setAttribute(Entity.user.toString(), dataResponse.get(ResponseObject.company));
                     dispatcher = request.getRequestDispatcher("/profile.jsp");
                 }
                 
@@ -156,6 +156,9 @@ public class ServletController extends HttpServlet
                 
                 break;
             case get:
+                
+                this.dispatchGetJSON(request, response, dataResponse);
+                
                 break;
             default:
                 return;
@@ -166,6 +169,7 @@ public class ServletController extends HttpServlet
     
     private void dispatchGetJSON(HttpServletRequest request,HttpServletResponse response, Response dataResponse) throws ServletException, IOException
     {
+        response.setHeader("content-type","application/json");
         PrintWriter out = response.getWriter();
         try 
         {
@@ -187,7 +191,6 @@ public class ServletController extends HttpServlet
             out.close();
         }
     }
-    
 
     private Map<PetitionParam,Object> mapParemeters(HttpServletRequest request)
     {
@@ -202,7 +205,6 @@ public class ServletController extends HttpServlet
         
         return map;
     }
-    
     private Petition parsePetition(String urlPattern, Map<PetitionParam,Object> params)
     {
         Entity entity = parseEntity(urlPattern);
@@ -212,7 +214,6 @@ public class ServletController extends HttpServlet
        
         return petition;
     }
-    
     private Function parseFunction(String urlPattern)
     {
         int sub_index = urlPattern.indexOf(INS_SEPARATOR);
@@ -227,7 +228,6 @@ public class ServletController extends HttpServlet
         
         return Entity.valueOf(entity);
     }
-    
     protected void sendError(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         RequestDispatcher distatcher = request.getRequestDispatcher("/pages/error.jsp");

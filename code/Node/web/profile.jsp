@@ -26,5 +26,6 @@
                 </section>
             <%}%>
         </section>
+        <jsp:include page="/include/endofpage.jsp"/>
     </body>
 </html>

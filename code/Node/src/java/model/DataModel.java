@@ -64,10 +64,8 @@ public class DataModel
                 break;
             case modify:
                 
-                if(petition.getEntity()==Entity.applicant)
-                    response.set(ResponseObject.applicant, modifyApplicant(petition));
-                if(petition.getEntity()==Entity.company)
-                    response.set(ResponseObject.company, modifyCompany(petition));
+                if(petition.getEntity()==Entity.applicant||petition.getEntity()==Entity.company)
+                    response.set(ResponseObject.applicant, modifyUser(petition));
                 
                 break;
             case logout:
@@ -81,7 +79,7 @@ public class DataModel
                 if(petition.getEntity()==Entity.skill)
                     response.set(ResponseObject.skills, getSkill(petition));
                 if(petition.getEntity()==Entity.employment)
-                    response.set(ResponseObject.skills, getEmployment(petition));
+                    response.set(ResponseObject.employments, getEmployment(petition));
                 
                 break;
             default:
@@ -130,77 +128,32 @@ public class DataModel
         return user;
     }
 
-    private Applicant modifyApplicant(Petition petition)
+    private User modifyUser(Petition petition)
     {
-        Applicant applicant = new Applicant();
+        User user = new Applicant();
         
-        applicant.setName(petition.get(PetitionParam.name).toString());
-        applicant.setPhone(petition.get(PetitionParam.phone).toString());
-        applicant.setAddress(petition.get(PetitionParam.address).toString());
-        applicant.setDescription(petition.get(PetitionParam.description).toString());
-        applicant.setContact(petition.get(PetitionParam.contact).toString());
+        user.setUserId(Integer.parseInt(petition.get(PetitionParam.userId).toString()));
+        user.setUserName(petition.get(PetitionParam.username).toString());
+        user.setUserType(UserType.get(petition.get(PetitionParam.userType).toString()));
+        user.setName(petition.get(PetitionParam.name).toString());
+        user.setPhone(petition.get(PetitionParam.phone).toString());
+        user.setAge(Integer.parseInt(petition.get(PetitionParam.age).toString()));
+        user.setAddress(petition.get(PetitionParam.address).toString());
+        user.setDescription(petition.get(PetitionParam.description).toString());
+        user.setContact(petition.get(PetitionParam.contact).toString());
         
-        return applicant;
-    }
-    private Company modifyCompany(Petition petition)
-    {
-        Company company = new Company();
-        
-        company.setName(petition.get(PetitionParam.name).toString());
-        company.setPhone(petition.get(PetitionParam.phone).toString());
-        company.setAddress(petition.get(PetitionParam.address).toString());
-        company.setDescription(petition.get(PetitionParam.description).toString());
-        company.setContact(petition.get(PetitionParam.contact).toString());
-        
-        return company;
+        return user;
     }
     
     private String getSkill(Petition petition)
     {
-        List<Skill> skills = new ArrayList<Skill>();
-        
-        Skill skill = new Skill();
-        skill.setSkillId(1);
-        skill.setName("Idioma Ingles");
-        skills.add(skill);
-        
-        skill.setSkillId(2);
-        skill.setName("Idioma Alemán");
-        skills.add(skill);
-        
-        skill.setSkillId(3);
-        skill.setName("Idioma Francés");
-        skills.add(skill);
-        
-        skill.setSkillId(4);
-        skill.setName("Lenguaje Java");
-        skills.add(skill);
-        
-        skill.setSkillId(5);
-        skill.setName("Lenguaje C#");
-        skills.add(skill);
-        
+        List<Skill> skills = DummyObjects.getSkills();
         return Skill.toJsonArray(skills);
     }
     
     private String getEmployment(Petition petition)
     {
-        List<Employment> employments = new ArrayList<Employment>();
-        
-        Employment employment = new Employment();
-        
-        employment.setEmploymentId(1);
-        employment.setName("Programador");
-        
-        employment.setEmploymentId(2);
-        employment.setName("Soporte Técnico");
-        
-        employment.setEmploymentId(3);
-        employment.setName("Administrador de Redes");
-        
-        employment.setEmploymentId(4);
-        employment.setName("Lider de Poyectos");
-        
+        List<Employment> employments = DummyObjects.getEmployments();
         return Employment.toJsonArray(employments);
     }
     

@@ -14,23 +14,20 @@ var Node = (function()
     
     var OnClickBtnSkills = function()
     {
-        doPetition("/skill.get");
+        doPetition("./skill.get");
     }
     var OnClickBtnEmployments = function()
     {
-        doPetition("/employment.get");
+        doPetition("./employment.get");
     }
     
-    var doPetition = funtion(urls)
+    var doPetition = function(url)
     {
-        $.ajax(url,
-        {
-            method : "post",
-            sucess : function(data)
+        $.post(url,function(data)
             {
-                alert(data);
+                alert(JSON.stringify(data));
             }
-        });
+        );
     }
     
     return {

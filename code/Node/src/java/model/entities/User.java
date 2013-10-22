@@ -17,6 +17,12 @@ public class User implements java.io.Serializable
     
     public User()
     {
+        this.name = "";
+        this.email = "";
+        this.phone = "";
+        this.address = "";
+        this.description = "";
+        this.contact = "";
     }
     
     public void setUserId(int userId)
