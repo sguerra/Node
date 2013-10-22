@@ -1,0 +1,81 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1102" measuredH="763" mockupW="1000" mockupH="700">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="102" y="63" w="1000" h="700" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <text>Registrarse%0A%20%0Ahttp%3A//www.TrabajosChidos.com.mx</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="233" y="148" w="653" h="-1" measuredW="558" measuredH="43" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <text>Buscador%20de%20Oferta%20Laboral%20TI</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::TextArea" x="117" y="213" w="463" h="488" measuredW="200" measuredH="140" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <size>24</size>
+        <text>%09%09%09%09%09%09%09%09Nuestro%20Sitio%3A%0AEl%20Buscador%20de%20Oferta%20Laboral%20es%20la%20puerta%20de%20acceso%20al%20mercado%20de%20trabajo%20en%20internet.%20%0A%A1Encuentre%20trabajo%20ya%21%20Consulte%20nuestro%20directorio%20de%20empresas%2C%20y%20tenga%20acceso%20on-line%20a%20nuestra%20bolsa%20de%20trabajo%20con%20las%20mejores%20ofertas%20de%20empleo</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::TitleWindow" x="614" y="213" w="446" h="488" measuredW="450" measuredH="400" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <text>Registrarse</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TextInput" x="694" y="367" w="260" h="-1" measuredW="124" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <state>disabled</state>
+        <text>Correo%20Electronico</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="780" y="331" w="85" h="-1" measuredW="46" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <text>Usuario</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="724" y="611" w="177" h="46" measuredW="77" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <text>Registrar</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::ComboBox" x="713" y="473" w="223" h="-1" measuredW="124" measuredH="62" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <state>disabled</state>
+        <text>Tipo%20de%20Usuario%0AEmpresa%0AAplicante</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::TextInput" x="702" y="292" w="260" h="-1" measuredW="60" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <state>disabled</state>
+        <text>Nombre</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="789" y="256" w="85" h="-1" measuredW="46" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <text>Nombre</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::TextInput" x="694" y="428" w="260" h="-1" measuredW="71" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <state>disabled</state>
+        <text>password</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="764" y="407" w="127" h="-1" measuredW="69" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <markup>true</markup>
+        <text>Contrase%F1a</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

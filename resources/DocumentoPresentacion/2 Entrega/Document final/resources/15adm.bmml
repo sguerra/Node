@@ -1,0 +1,33 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1076" measuredH="729" mockupW="1000" mockupH="700">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="76" y="29" w="1000" h="700" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Administrador</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::TabBar" x="76" y="168" w="1000" h="537" measuredW="217" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <selectedIndex>-1</selectedIndex>
+        <text>Aplicantes%2C%20Empresas</text>
+        <value>0</value>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Title" x="207" y="114" w="653" h="-1" measuredW="558" measuredH="43" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buscador%20de%20Oferta%20Laboral%20TI</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Link" x="981" y="118" w="-1" h="-1" measuredW="82" measuredH="19" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Administrador</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::DataGrid" x="114" y="210" w="925" h="302" measuredW="250" measuredH="51" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nambre%2C%20Correo%2CBorrar%0APablo%20P.%20Vera%2C%20pabloart@gf.com%2C%20%5Bx%5D</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

@@ -1,0 +1,28 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1029" measuredH="719" mockupW="1000" mockupH="700">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="29" y="19" w="1000" h="700" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <text>Empresas%0A%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TabBar" x="29" y="152" w="1000" h="537" measuredW="179" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>0</selectedIndex>
+        <text>Ver%20aplicantes</text>
+        <value>0</value>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="883" y="102" w="-1" h="-1" measuredW="122" measuredH="19" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Bienvenido%20%22Usuario%22</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::DataGrid" x="73" y="228" w="887" h="350" measuredW="401" measuredH="81" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Name%2C%20Age%2C%20Estudios%2C%20habilidades%2C%20aceptar%20%0AMario%20B.%20Paz%2C%2025%2C%20Ing.%20Sistemas%2C%20Programacion%20Java%2C%20%5Bx%5D%0APablo%20P.%20Hdz%2C%2052%2C%20Ing.%20Sistemas%2C%20Programacion%20Java%20y%20C++%2C%20%5Bx%5D</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
