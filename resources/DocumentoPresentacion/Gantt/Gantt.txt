@@ -1,0 +1,7 @@
+El diagrama de Gantt ya esta completo, segun yo
+solo para moverle algun dato de porcentaje seria cuestion de moverle los porcentaje a cada actividad,
+menos  a la general, esa se modifica automaticamente
+
+si las fechas no estan bien estan ocultas las columnas donde se modifican, son las E y F
+si no diganme 
+yo creo que estan bien asi
