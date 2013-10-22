@@ -20,7 +20,7 @@
                 <jsp:include page="/pages/profile/company.jsp"/>
             <%}if(user.getUserType()==UserType.applicant){%>
                 <jsp:include page="/pages/profile/applicant.jsp"/>
-            <%}else if(user.getUserType()==UserType.admin){%>
+            <%}if(user.getUserType()==UserType.admin){%>
                 <section class="col-lg-6 col-lg-offset-3 well">
                     <jsp:include page="/pages/profile/user.jsp"/>
                 </section>

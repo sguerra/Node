@@ -40,7 +40,12 @@ public class DataModel
             case login:
                 
                 if(petition.getEntity()==Entity.user)
-                    response.set(ResponseObject.user, loginUser(petition));
+                {
+                    User user = this.loginUser(petition);
+                    response.set(ResponseObject.user, user);
+                    if(user==null)
+                        response.setStatus(Status.InvalidCredentials);
+                }
                 
                 break;
             case add:
@@ -106,29 +111,13 @@ public class DataModel
         user.setUserName(username);
         user.setPassword(petition.get(PetitionParam.password).toString());
         
-        if(username.equals("applicant"))
+        for(User search : DummyObjects.getRegisteredUsers())
         {
-            user.setName("Señor Aplicante");
-            user.setDescription("Ing. Sistemas");
-            user.setUserType(UserType.applicant);
-            user.setEmail("applicant@mail.com");
-        }
-        else if(username.equals("company"))
-        {
-            user.setName("Empresa CO");
-            user.setDescription("Empresa dedicada al desarrollo de Sistemas");
-            user.setUserType(UserType.company);
-            user.setEmail("company@mail.com");
-            
-        }else if(username.equals("admin"))
-        {
-            user.setName("Mr. Administrador");
-            user.setDescription("Ing. Sistemas también");
-            user.setUserType(UserType.admin);
-            user.setEmail("admin@mail.com");
+            if(search.equals(user))
+                return search;
         }
         
-        return user;
+        return null;
     }
     private User logoutUser(Petition petition)
     {

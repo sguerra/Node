@@ -16,6 +16,7 @@ import model.DataModel;
 import model.entities.*;
 import model.response.Response;
 import model.response.ResponseObject;
+import model.response.Status;
 
 public class ServletController extends HttpServlet 
 {
@@ -40,7 +41,7 @@ public class ServletController extends HttpServlet
     {
         String fullUrl = request.getRequestURL().toString();
         
-        if(this.ValidPattern(fullUrl))
+        if(!this.ValidPattern(fullUrl))
         {
             this.sendError(request, response);
             return;
@@ -88,13 +89,21 @@ public class ServletController extends HttpServlet
                 
                 if(petition.getEntity()==Entity.user)
                 {
-                    User user = (User)dataResponse.get(ResponseObject.user);
-                    session.setAttribute(Entity.user.toString(), user);
-                    
-                    if(user.getUserType()==UserType.admin)
-                        dispatcher = request.getRequestDispatcher("/admin.jsp");
+                    if(dataResponse.getStatus()== Status.Succes)
+                    {   
+                        User user = (User)dataResponse.get(ResponseObject.user);
+                        session.setAttribute(Entity.user.toString(), user);
+
+                        if(user.getUserType()==UserType.admin)
+                            dispatcher = request.getRequestDispatcher("/admin.jsp");
+                        else
+                            dispatcher = request.getRequestDispatcher("/prospects.jsp");
+                    }
                     else
-                        dispatcher = request.getRequestDispatcher("/prospects.jsp");
+                    {
+                        dispatcher = request.getRequestDispatcher("/index.jsp");
+                    }
+                        
                 }
                 
                 break;
@@ -163,8 +172,12 @@ public class ServletController extends HttpServlet
             switch(dataResponse.getPetition().getEntity()){
                 case skill:
                     
+                    out.write(dataResponse.get(ResponseObject.skills).toString());
+                    
                     break;
                 case employment:
+                    
+                    out.write(dataResponse.get(ResponseObject.employments).toString());
                     
                     break;
                 default:
