@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="model.entities.User"%>
+<%@page import="model.entities.UserType"%>
+<%@page import="model.response.ResponseObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,19 +19,18 @@
                         <th>email</th>
                     </tr>
                 </thead>
+                <%
+                    List<User> users = (List<User>)session.getAttribute(ResponseObject.users.toString());
+                %>
                 <tbody>
+                    <%for(User user : users){%>
                     <tr>
-                        <td>mr usuario</td>
-                        <td>aplicante</td>
-                        <td>mruser@mail.com</td>
+                        <td><%=user.getUserName()%></td>
+                        <td><%=user.getUserType()==UserType.applicant?"Aplicante":user.getUserType()==UserType.company?"Empresa":"Admin"%></td>
+                        <td><%=user.getEmail()%></td>
                         <td><div class="btn btn-danger">borrar</div></td>
                     </tr>
-                    <tr>
-                        <td>usuario co</td>
-                        <td>compañia</td>
-                        <td>company@mail.com</td>
-                        <td><div class="btn btn-danger">borrar</div></td>
-                    </tr>
+                    <%}%>
                 </tbody>
             </table>
         </section>

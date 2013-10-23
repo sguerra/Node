@@ -70,9 +70,14 @@ public class ServletController extends HttpServlet
                     session.setAttribute(Entity.user.toString(), user);
 
                     if(user.getUserType()==UserType.admin)
+                    {
+                        session.setAttribute(ResponseObject.users.toString(), dataResponse.get(ResponseObject.users));
                         dispatcher = request.getRequestDispatcher("/admin.jsp");
+                    }
                     else
+                    {
                         dispatcher = request.getRequestDispatcher("/prospects.jsp");
+                    }
                 }
                 else
                 {

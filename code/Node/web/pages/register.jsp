@@ -13,15 +13,15 @@
     </div>
     <div class="form-group">
         <label>correo</label>
-        <input name="email" type="text" class="form-control"/>
+        <input name="email" type="email" class="form-control"/>
     </div>
     <div class="form-group">
         <label>contraseña</label>
-        <input name="password" type="password" class="form-control"/>
+        <input name="password" type="password" class="form-control input-password"/>
         <label>repetir contraseña</label>
-        <input type="password" class="form-control"/>
+        <input type="password" class="form-control input-password"/>
     </div>
     <a class="btn btn-link pull-left" href="./?">iniciar sesión</a>
-    <button type="submit" class="btn btn-info pull-right">registrar</button>
+    <button type="submit" class="btn btn-info pull-right btn-user-register">registrar</button>
 
 </form>

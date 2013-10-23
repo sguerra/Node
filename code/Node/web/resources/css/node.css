@@ -5,11 +5,11 @@ body {
 
 .body-error
 {
-    background-color: #0000FF;
+    background-color: #563d7c;
 }
 .content-error
 {
-    background-color: #0f00b0;
+    background-color: #6C5491;
     padding: 50px;
 }
 .msg-error
