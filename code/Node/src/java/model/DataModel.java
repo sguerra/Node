@@ -45,8 +45,7 @@ public class DataModel
                     response.set(ResponseObject.user, user);
                     if(user==null)
                         response.setStatus(Status.InvalidCredentials);
-                    
-                    if(user.getUserType()==UserType.admin)
+                    else if(user.getUserType()==UserType.admin)
                         response.set(ResponseObject.users, DummyObjects.getRegisteredUsers());
                 }
                 
