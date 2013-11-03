@@ -3,8 +3,7 @@
 \beamer@sectionintoc {1}{Contenido}{2}{0}{1}
 \beamer@sectionintoc {2}{Introducci\IeC {\'o}n}{3}{0}{2}
 \beamer@subsectionintoc {2}{1}{Descripci\IeC {\'o}n del funcionamiento del sistema}{4}{0}{2}
-\beamer@subsectionintoc {2}{2}{Descripci\IeC {\'o}n del funcionamiento del sistema}{5}{0}{2}
-\beamer@sectionintoc {3}{Diagrama Entidad RElaci\IeC {\'o}n}{6}{0}{3}
+\beamer@sectionintoc {3}{Diagrama Entidad Relaci\IeC {\'o}n}{6}{0}{3}
 \beamer@sectionintoc {4}{Diagramas de Clases}{7}{0}{4}
 \beamer@sectionintoc {5}{Vistas}{9}{0}{5}
 \beamer@subsectionintoc {5}{1}{Inicio}{10}{0}{5}
