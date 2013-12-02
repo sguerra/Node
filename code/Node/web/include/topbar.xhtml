@@ -19,15 +19,15 @@
                 
                 <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav"> 
-                        <c:if test="#{user!=null}">
-                            <c:if test="#{user.userType=='company' || user.userType=='applicant'}">
-                                    <li><a href="./prospects.jsp">Inicio</a></li>
-                                    <li><a href="./suggested.jsp">Sugeridos</a></li>
-                                    <li><a href="./profile.jsp">Perfil</a></li>
+                        <c:if test="#{sessionBean.valid}">
+                            <c:if test="#{sessionBean.user.userType=='company' || sessionBean.user.userType=='applicant'}">
+                                    <li><a href="./prospects.xhtml">Inicio</a></li>
+                                    <li><a href="./suggested.xhtml">Sugeridos</a></li>
+                                    <li><a href="./profile.xhtml">Perfil</a></li>
                             </c:if>
-                            <c:if test="#{user.userType=='admin'}">
-                                    <li><a href="./profile.jsp">Perfil</a></li>
-                                    <li><a href="./admin.jsp">Administrar</a></li>
+                            <c:if test="#{sessionBean.user.userType=='admin'}">
+                                    <li><a href="./profile.xhtml">Perfil</a></li>
+                                    <li><a href="./admin.xhtml">Administrar</a></li>
                             </c:if>
                         </c:if>
                 

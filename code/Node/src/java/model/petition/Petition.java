@@ -1,4 +1,5 @@
 package model.petition;
+import java.util.HashMap;
 import model.petition.Function;
 import model.petition.Entity;
 import java.util.Map;
@@ -13,11 +14,16 @@ public class Petition
     {
         this.entity = entity;
         this.function = function;
+        this.params = new HashMap<PetitionParam, Object>();
     }
     
     public void setParams(Map<PetitionParam,Object> params)
     {
         this.params = params;
+    }
+    public Object set(PetitionParam param, Object value)
+    {
+        return this.params.put(param, value);
     }
     public Object get(PetitionParam param)
     {

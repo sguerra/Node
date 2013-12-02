@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <ui:include src="/include/startofpage.xhtml"/>
+    </h:head>
+    <h:body>
+        <ui:include src="/include/topbar.xhtml"/>
+        
+        <section class="col-lg-10 col-lg-offset-1 well">
+            <legend>Perfil</legend>
+            <c:if test="#{sessionBean.user.userType=='company'}">
+                <ui:include src="/pages/profile/company.xhtml"/>
+            </c:if>
+            <c:if test="#{sessionBean.user.userType=='applicant'}">
+                <ui:include src="/pages/profile/applicant.xhtml"/>
+            </c:if>
+            <c:if test="#{sessionBean.user.userType=='admin'}">
+                <section class="col-lg-6 col-lg-offset-3 well">
+                    <ui:include src="/pages/profile/user.xhtml"/>
+                </section>
+            </c:if>
+        </section>
+        <ui:include src="/include/endofpage.xhtml"/>
+    </h:body>
+</html>
+

@@ -2,41 +2,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <ui:include src="/include/startofpage.xhtml"/>
-        <ui:include src="/include/topbar.xhtml"/>
     </h:head>
     <h:body>
-        <!--section class="col-lg-10 col-lg-offset-1 well">
+        <ui:include src="/include/topbar.xhtml"/>
+   
+        <section class="col-lg-5 col-lg-offset-1 well">
+            <legend>prospectos</legend>
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>sugerencia</th>
-                        <th>nombre</th>
-                        <th>tipo</th>
-                        <th>email</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="applicant" items="#{applicants}">
-                        <td> <h:outputLabel value="#{applicant.id}"/> </td>
-                        <td> <h:outputLabel value="#{applicant.username}"/> </td>
-                        <td> <h:outputLabel value="#{applicant.userType}"/> </td>
-                        <td> <h:outputLabel value="#{applicant.email}"/> </td>
-                        <td> <h:button class="btn btn-default" value="ignorar"/> </td>
-                        <td> <h:button class="btn btn-info" value="contactar"/> </td>
-                    </c:forEach>
-                </tbody>
-            </table>
-        </section-->
-        <section class="col-lg-10 col-lg-offset-1 well">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>sugerencia</th>
                         <th>nombre</th>
                         <th>tipo</th>
                         <th>email</th>
@@ -45,23 +22,57 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
                         <td>mr usuario</td>
                         <td>aplicante</td>
                         <td>mruser@mail.com</td>
-                        <td><div class="btn btn-default">ignorar</div>
-                        <div class="btn btn-info">contactar</div></td>
+                        <td>
+                            <div class="btn btn-default">ignorar</div>
+                            <div class="btn btn-info">aplicar</div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>2</td>
                         <td>usuario co</td>
                         <td>compañia</td>
                         <td>company@mail.com</td>
-                        <td><div class="btn btn-default">ignorar</div>
-                        <div class="btn btn-info">aplicar</div></td>
+                        <td>
+                            <div class="btn btn-default">ignorar</div>
+                            <div class="btn btn-info">aplicar</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="col-lg-4 col-lg-offset-1 well">
+            <legend>aplicados</legend>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>nombre</th>
+                        <th>tipo</th>
+                        <th>email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>mr usuario</td>
+                        <td>aplicante</td>
+                        <td>mruser@mail.com</td>
+                        <td>
+                            <div class="btn btn-default">ignorar</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>usuario co</td>
+                        <td>compañia</td>
+                        <td>company@mail.com</td>
+                        <td>
+                            <div class="btn btn-default">ignorar</div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </section>
     </h:body>
 </html>
+

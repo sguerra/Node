@@ -50,9 +50,6 @@
             30
         </session-timeout>
     </session-config>
-    <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
-    </welcome-file-list>
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
         <location>/pages/error.jsp</location>

@@ -1,0 +1,38 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <legend>
+        <c:if test="#{sessionBean.user.userType=='applicant'}">
+            <h:outputText value="Aplicante"/> 
+        </c:if>
+        <c:if test="#{sessionBean.user.userType=='company'}">
+            <h:outputText value="Empresa"/> 
+        </c:if>
+        <c:if test="#{sessionBean.user.userType=='admin'}">
+            <h:outputText value="Admin"/> 
+        </c:if>
+    </legend>
+    <h:form>
+        <h:inputHidden id="userId" value="#{sessionBean.user.userId}"/>
+        <div class="form-group">
+            <label>nombre de usuario</label>
+            <p type="text" class="form-control-static">
+                <h:outputText value="#{sessionBean.user.userName}"/>
+            </p>
+        </div>
+        <div class="form-group">
+            <label>email</label>
+            <p type="text" class="form-control-static">    
+                <h:outputText value="#{sessionBean.user.email}"/>
+            </p>
+        </div>
+        <h:commandButton class="btn btn-warning pull-left" value="cerrar sesión" action="#{sessionBean.close()}"/>
+    </h:form>
+    <h:form>
+       <h:inputHidden id="userId" value="#{user.userId}"/>
+       <h:commandButton class="btn btn-danger pull-right" value="cerrar cuenta"/>
+    </h:form>
+</ui:component>
+
+
