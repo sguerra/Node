@@ -8,6 +8,7 @@
     <head>
         <jsp:include page="/include/startofpage.jsp"/>
     </head>
+    
     <body>
         <jsp:include page="/include/topbar.jsp"/>
         <section class="col-lg-10 col-lg-offset-1 well">
