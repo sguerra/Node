@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="node"/>
+  <table-filter match-name="curriculim"/>
+  <table-filter match-name="empleo"/>
+  <table-filter match-name="aplicanteempleo"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="tipohabilidad"/>
+  <table-filter match-name="usuariohabilidad"/>
+  <table-filter match-name="empresaempleo"/>
+  <table-filter match-name="tipousuario"/>
+  <table-filter match-name="habilidades"/>
+</hibernate-reverse-engineering>

@@ -21,7 +21,7 @@ public class BuscarHabilidad {
     public String buscarHabi(String hab){
     Session session = HibernateUtil.getSessionFactory().openSession();
     Usuario u =(Usuario) session.get(Usuario.class, hab);
-    Habilidades h = (Habilidades) session.get(Habilidades.class, session);
+    Habilidades h = (Habilidades) session.get(Habilidades.class, hab);
     return "habilidad"+h.getNombre();
 
             }
