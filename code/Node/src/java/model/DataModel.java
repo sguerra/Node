@@ -7,6 +7,7 @@ import model.entities.Employment;
 import model.entities.Skill;
 import model.entities.User;
 import model.entities.UserType;
+import model.entities.Vacancy;
 import model.petition.Entity;
 import model.petition.Petition;
 import model.petition.PetitionParam;
@@ -85,7 +86,15 @@ public class DataModel
                     response.set(ResponseObject.employments, getEmployment(petition));
                 if(petition.getEntity()==Entity.user)
                     response.set(ResponseObject.users, DummyObjects.getRegisteredUsers());
-               
+            
+                break;
+            case suggest:
+                
+                if(petition.getEntity()==Entity.applicant)
+                    response.set(ResponseObject.vacancies, getSuggestedVacancies(petition));
+                if(petition.getEntity()==Entity.company)
+                    response.set(ResponseObject.applicants, getSuggestedApplicants(petition));
+                
                 break;
             default:
                 response.setStatus(Status.PetitionNotFound);
@@ -189,5 +198,17 @@ public class DataModel
         return Employment.toJsonArray(employments);
     }
     
+    private List<Vacancy> getSuggestedVacancies(Petition petition)
+    {
+        int userId = Integer.parseInt(petition.get(PetitionParam.userId).toString());
+        
+        return DummyObjects.getVacancies(userId);
+    }
+    private List<Applicant> getSuggestedApplicants(Petition petition)
+    {
+        int userId = Integer.parseInt(petition.get(PetitionParam.userId).toString());
+        
+        return DummyObjects.getApplicants(userId);
+    }
     
 }

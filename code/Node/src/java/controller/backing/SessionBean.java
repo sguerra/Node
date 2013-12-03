@@ -28,7 +28,7 @@ public class SessionBean implements Serializable
     // Output
     private boolean valid;
     private User user;
-
+    
     public SessionBean() 
     {
         this.dataModel = DataModel.getInstance();
@@ -54,6 +54,7 @@ public class SessionBean implements Serializable
     {
         return user;
     }    
+
     public boolean isValid() 
     {
         return valid;

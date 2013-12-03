@@ -3,63 +3,57 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <ui:include src="/include/startofpage.xhtml"/>
         <ui:include src="/include/topbar.xhtml"/>
     </h:head>
     <h:body>
-        <!--section class="col-lg-10 col-lg-offset-1 well">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>sugerencia</th>
-                        <th>nombre</th>
-                        <th>tipo</th>
-                        <th>email</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="applicant" items="#{applicants}">
-                        <td> <h:outputLabel value="#{applicant.id}"/> </td>
-                        <td> <h:outputLabel value="#{applicant.username}"/> </td>
-                        <td> <h:outputLabel value="#{applicant.userType}"/> </td>
-                        <td> <h:outputLabel value="#{applicant.email}"/> </td>
-                        <td> <h:button class="btn btn-default" value="ignorar"/> </td>
-                        <td> <h:button class="btn btn-info" value="contactar"/> </td>
-                    </c:forEach>
-                </tbody>
-            </table>
-        </section-->
         <section class="col-lg-10 col-lg-offset-1 well">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>sugerencia</th>
-                        <th>nombre</th>
-                        <th>tipo</th>
-                        <th>email</th>
-                        <th></th>
+                        <c:if test="${sessionBean.user.userType=='applicant'}">
+                            <th>Vacante</th>
+                            <th>Salario</th>
+                            <th>Descripción</th>
+                            <th class="col-md-1"></th>
+                            <th class="col-md-1"></th>
+                        </c:if>
+                        <c:if test="${sessionBean.user.userType=='company'}">
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                            <th>Descripción</th>
+                            <th>Email</th>
+                            <th class="col-md-1"></th>
+                            <th class="col-md-1"></th>
+                        </c:if>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>mr usuario</td>
-                        <td>aplicante</td>
-                        <td>mruser@mail.com</td>
-                        <td><div class="btn btn-default">ignorar</div>
-                        <div class="btn btn-info">contactar</div></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>usuario co</td>
-                        <td>compañia</td>
-                        <td>company@mail.com</td>
-                        <td><div class="btn btn-default">ignorar</div>
-                        <div class="btn btn-info">aplicar</div></td>
-                    </tr>
+                    <c:if test="${sessionBean.user.userType=='applicant'}">
+                        <c:forEach var="vacancy" items="${matchBean.suggestedVacancies(sessionBean.user.userId)}">
+                            <tr>
+                                <td> <h:outputText value="${vacancy.employment.name}"/> </td>
+                                <td> <h:outputText value="${vacancy.salary}"/> </td>
+                                <td> <h:outputText value="${vacancy.description}"/> </td>
+                                <td> <h:button class="btn btn-default" value="ignorar"/> </td>
+                                <td> <h:button class="btn btn-info" value="contactar"/> </td>
+                            </tr>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${sessionBean.user.userType=='company'}">
+                        <c:forEach var="applicant" items="${matchBean.suggestedApplicants(sessionBean.user.userId)}">
+                            <tr>
+                                <td> <h:outputText value="${applicant.name}"/> </td>
+                                <td> <h:outputText value="${applicant.age}"/> </td>
+                                <td> <h:outputText value="${applicant.description}"/> </td>
+                                <td> <h:outputText value="${applicant.email}"/> </td>
+                                <td> <h:button class="btn btn-default" value="ignorar"/> </td>
+                                <td> <h:button class="btn btn-info" value="contactar"/> </td>
+                            </tr>
+                        </c:forEach>
+                    </c:if>
                 </tbody>
             </table>
         </section>

@@ -143,4 +143,67 @@ public class DummyObjects
         
         return employments;
     }
+    public static List<Vacancy> getVacancies(int userId)
+    {
+        List<Vacancy> vacancies = new ArrayList<Vacancy>();
+        
+        Employment e = new Employment();
+        e.setEmploymentId(1);
+        e.setName("Programador");
+        
+        Skill s = new Skill();
+        s.setSkillId(1);
+        s.setName("Idioma Ingles");
+        
+        List<Skill> skills = new ArrayList<Skill>();
+        skills.add(s);
+        
+        Vacancy v = new Vacancy();
+        v.setEmploymet(e);
+        v.setDescription("Buen Salario");
+        v.setSkills(skills);
+        v.setSalary(20000);
+        
+        vacancies.add(v);
+        
+        s = new Skill();
+        s.setSkillId(5);
+        s.setName("Lenguaje C#");
+        
+        skills.add(s);
+        
+        v = new Vacancy();
+        v.setEmploymet(e);
+        v.setDescription("Buen ambiente de trabajo");
+        v.setSkills(skills);
+        v.setSalary(15000);
+        
+        vacancies.add(v);
+        
+        return vacancies;
+    }
+    public static List<Applicant> getApplicants(int userId)
+    {
+        List<Applicant> applicants = new ArrayList<Applicant>();
+        
+        Applicant a = new Applicant();
+        
+        a.setName("Aplicante");
+        a.setAge(39);
+        a.setEmail("app@mail.com");
+        a.setDescription("Con ánimos de trabajar");
+        
+        applicants.add(a);
+        
+        a = new Applicant();
+        
+        a.setName("Mr. Desarrollador");
+        a.setAge(25);
+        a.setEmail("develop@mail.com");
+        a.setDescription("buen programador");
+        
+        applicants.add(a);
+        
+        return applicants;
+    }
 }
