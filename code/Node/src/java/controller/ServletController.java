@@ -121,13 +121,15 @@ public class ServletController extends HttpServlet
             case get:
                 
                 this.dispatchGetJSON(request, response, dataResponse);
+                dispatcher = null;
                 
                 break;
             default:
                 return;
         }
         
-        dispatcher.forward(request, response);
+        if(dispatcher!=null)
+            dispatcher.forward(request, response);
     }
     
     private void dispatchGetJSON(HttpServletRequest request,HttpServletResponse response, Response dataResponse) throws ServletException, IOException

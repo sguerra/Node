@@ -5,53 +5,39 @@
     <section class="col-lg-6 well">
         <h:form>
             <div class="form-group">
-                <label>Nombre</label>
+                <label>Nombre ó Razón Social</label>
                 <h:inputText id="name" class="form-control" value="#{sessionBean.user.name}"/>
             </div>
             <div class="form-group">
-                <label>Edad</label>
-                <h:inputText id="age" class="form-control" value="#{sessionBean.user.age}"/>
-            </div>
-            <div class="form-group">
                 <label>Teléfono</label>
-               <h:inputText id="phone" class="form-control" value="#{sessionBean.user.phone}"/>
+                <h:inputText id="phone" class="form-control"  value="#{sessionBean.user.phone}"/>
             </div>
             <div class="form-group">
                 <label>Dirección</label>
                 <h:inputText id="address" class="form-control" value="#{sessionBean.user.address}"/>
             </div>
             <div class="form-group">
-                <label>Profesión</label>
-                <h:inputText id="description" class="form-control " value="#{sessionBean.user.description}"/>
+                <label>Descripción</label>
+                <h:inputText id="description" class="form-control" value="#{sessionBean.user.description}"/>
             </div>
             <div class="form-group">
-                <label>Habilidades</label>
+                <label>Vacantes</label>
                 <h:selectManyMenu class="form-control">
                 </h:selectManyMenu>
                 <br/>
-                <div class="btn btn-default btn-get-skill">agregar</div>
+                <div class="btn btn-default btn-get-employment">agregar</div>
                 <div class="btn btn-default">quitar</div>
             </div>
             <div class="form-group">
                 <label>Contacto</label>
                 <h:inputText id="contact" class="form-control" value="#{sessionBean.user.contact}"/>
             </div>
-            <div class="form-group">
-                <label>CV</label>
-                <br/>
-                <div class="btn btn-default">quitar</div>
-                <div class="btn btn-default">ver</div>
-                <div class="input-group">
-                    <input type="text" class="form-control"/>
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">agregar</button>
-                    </span>
-                  </div>
-            </div>
             <h:commandButton class="btn btn-info pull-right" value="guardar" action="#{sessionBean.modify()}"/>
         </h:form>
     </section>
     <section class="col-lg-4 col-lg-offset-1 well">
-        <ui:include src="./user.xhtml"/>
+        <ui:include src="/pages/profile/user.xhtml"/>
     </section>
+
 </ui:component>
+

@@ -16,7 +16,7 @@ import model.response.Response;
 import model.response.ResponseObject;
 import model.response.Status;
 
-@ManagedBean
+@ManagedBean(name="sessionBean")
 @SessionScoped
 public class SessionBean implements Serializable
 {
@@ -102,5 +102,24 @@ public class SessionBean implements Serializable
         catch(Exception e)
         {
         }
+    }
+    public void modify()
+    {
+        Entity entity = this.user.getUserType()==UserType.applicant ? Entity.applicant : Entity.company;
+        Petition petition = new Petition(entity, Function.modify);
+        
+        petition.set(PetitionParam.userId, this.user.getUserId());
+        petition.set(PetitionParam.username, this.user.getUserName());
+        petition.set(PetitionParam.password, this.user.getPassword());
+        petition.set(PetitionParam.userType, this.user.getUserType());
+        petition.set(PetitionParam.name, this.user.getName());
+        petition.set(PetitionParam.phone, this.user.getPhone());
+        petition.set(PetitionParam.age, this.user.getAge());
+        petition.set(PetitionParam.address, this.user.getAddress());
+        petition.set(PetitionParam.description, this.user.getDescription());
+        petition.set(PetitionParam.contact, this.user.getContact());
+        petition.set(PetitionParam.email, this.user.getEmail());
+        
+        Response response = dataModel.execute(petition);
     }
 }

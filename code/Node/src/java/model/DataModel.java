@@ -154,7 +154,7 @@ public class DataModel
         user.setDescription(petition.get(PetitionParam.description).toString());
         user.setContact(petition.get(PetitionParam.contact).toString());
         user.setEmail(petition.get(PetitionParam.email).toString());
-        
+            
         DummyObjects.updateRegisteredUser(user);
         
         return user;
