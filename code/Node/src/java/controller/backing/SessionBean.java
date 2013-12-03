@@ -7,6 +7,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import model.DataModel;
 import model.entities.User;
+import model.entities.UserType;
 import model.petition.Entity;
 import model.petition.Function;
 import model.petition.Petition;
@@ -74,7 +75,11 @@ public class SessionBean implements Serializable
                 this.user = (User)response.get(ResponseObject.user);
                 this.valid = true;
                 
-                FacesContext.getCurrentInstance().getExternalContext().redirect("prospects.xhtml");
+                if(user.getUserType()== UserType.admin)
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+                else
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("prospects.xhtml");
+                    
             }catch(Exception e)
             {
             }
@@ -93,7 +98,8 @@ public class SessionBean implements Serializable
             session.invalidate();
 
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-        }catch(Exception e)
+        }
+        catch(Exception e)
         {
         }
     }

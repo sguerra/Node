@@ -3,59 +3,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
-        <title>Facelet Title</title>
+        <ui:include src="/include/startofpage.xhtml"/>
     </h:head>
     <h:body>
-        
-<html>
-    <head>
-        <ui:include src="/include/startofpage.xhtml"/>
-    </head>
-    <body>
         <ui:include src="/include/topbar.xhtml"/>
-        <section class="col-lg-10 col-lg-offset-1 well">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>nombre</th>
-                        <th>tipo</th>
-                        <th>email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <!--c:if test="#{false}">
-                        <c:forEach var="user" items="#{users}">
+            <section class="col-lg-10 col-lg-offset-1 well">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>nombre</th>
+                            <th>tipo</th>
+                            <th>email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="user" items="${adminBean.users}">
                             <tr>
-                                <td> <h:outputText value="#{user.username}"/> </td>
+                                <td> <h:outputText value="${user.userName}"/> </td>
                                 <td> 
-                                    <c:if test="#{user.userType=='applicant'}">
+                                    <c:if test="${user.userType=='applicant'}">
                                         <h:outputText value="Aplicante"/> 
                                     </c:if>
-                                    <c:if test="#{user.userType=='company'}">
+                                    <c:if test="${user.userType=='company'}">
                                         <h:outputText value="Empresa"/> 
                                     </c:if>
-                                    <c:if test="#{user.userType=='admin'}">
-                                        <h:outputText value="Admin"/> 
+                                    <c:if test="${user.userType=='admin'}">
+                                        <h:outputText value="Admin"/>
                                     </c:if>
                                 </td>
-                                <td> <h:outputText value="#{user.email}"/> </td>
+                                <td> <h:outputText value="${user.email}"/> </td>
                                 <td> 
-                                    <h:commandButton class="btn btn-danger" value="borrar"/>
+                                    <h:form>
+                                        <h:commandButton class="btn btn-danger" value="borrar" action="${adminBean.removeAccount(user.userId)}"/>
+                                    </h:form>
                                 </td>
                             </tr>
                         </c:forEach>
-                    </c:if-->
-                </tbody>
-            </table>
-        </section>
-    </body>
-</html>
-
-        
-        
+                    </tbody>
+                </table>
+            </section>
     </h:body>
 </html>
 

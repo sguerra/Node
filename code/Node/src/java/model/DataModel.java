@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 import model.entities.Applicant;
 import model.entities.Company;
@@ -84,7 +83,9 @@ public class DataModel
                     response.set(ResponseObject.skills, getSkill(petition));
                 if(petition.getEntity()==Entity.employment)
                     response.set(ResponseObject.employments, getEmployment(petition));
-                
+                if(petition.getEntity()==Entity.user)
+                    response.set(ResponseObject.users, DummyObjects.getRegisteredUsers());
+               
                 break;
             default:
                 response.setStatus(Status.PetitionNotFound);

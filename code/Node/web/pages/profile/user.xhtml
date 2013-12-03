@@ -30,8 +30,7 @@
         <h:commandButton class="btn btn-warning pull-left" value="cerrar sesión" action="#{sessionBean.close()}"/>
     </h:form>
     <h:form>
-       <h:inputHidden id="userId" value="#{user.userId}"/>
-       <h:commandButton class="btn btn-danger pull-right" value="cerrar cuenta"/>
+       <h:commandButton class="btn btn-danger pull-right" value="cerrar cuenta" action="#{adminBean.removeSelfAccount(sessionBean.user.userId)}"/>
     </h:form>
 </ui:component>
 
