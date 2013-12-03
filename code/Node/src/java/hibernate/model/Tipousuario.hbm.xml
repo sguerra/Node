@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/12/2013 10:59:37 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="hibernate.model.Tipousuario" table="tipousuario" catalog="node">
+        <id name="idTipoUsuario" type="int">
+            <column name="idTipoUsuario" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" not-null="true" />
+        </property>
+        <set name="usuarios" inverse="true">
+            <key>
+                <column name="TipoUsuario_idTipoUsuario" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.model.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

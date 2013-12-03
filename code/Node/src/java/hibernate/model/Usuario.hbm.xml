@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/12/2013 10:59:37 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="hibernate.model.Usuario" table="usuario" catalog="node">
+        <id name="idusuario" type="int">
+            <column name="idusuario" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="curriculim" class="hibernate.model.Curriculim" fetch="select">
+            <column name="Curriculim_idCurriculim" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipousuario" class="hibernate.model.Tipousuario" fetch="select">
+            <column name="TipoUsuario_idTipoUsuario" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="100" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="8" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="60" not-null="true" />
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="age" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="45" />
+        </property>
+        <property name="contacto" type="string">
+            <column name="contacto" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="100" />
+        </property>
+        <property name="usuariocol" type="string">
+            <column name="usuariocol" length="45" />
+        </property>
+        <set name="empresaempleos" inverse="true">
+            <key>
+                <column name="usuario_idusuario" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.model.Empresaempleo" />
+        </set>
+        <set name="habilidadeses" inverse="false" table="usuariohabilidad">
+            <key>
+                <column name="usuario_idusuario" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.model.Habilidades">
+                <column name="Habilidades_idHabilidades" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="empleos" inverse="false" table="aplicanteempleo">
+            <key>
+                <column name="usuario_idusuario" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.model.Empleo">
+                <column name="Empleo_idEmpleo" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

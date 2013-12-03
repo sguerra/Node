@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/12/2013 10:59:37 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="hibernate.model.Empleo" table="empleo" catalog="node">
+        <id name="idEmpleo" type="int">
+            <column name="idEmpleo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="habilidades" class="hibernate.model.Habilidades" fetch="select">
+            <column name="Habilidades_idHabilidades" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="100" />
+        </property>
+        <set name="empresaempleos" inverse="true">
+            <key>
+                <column name="Empleo_idEmpleo" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.model.Empresaempleo" />
+        </set>
+        <set name="usuarios" inverse="false" table="aplicanteempleo">
+            <key>
+                <column name="Empleo_idEmpleo" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.model.Usuario">
+                <column name="usuario_idusuario" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

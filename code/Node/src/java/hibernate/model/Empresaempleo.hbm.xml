@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/12/2013 10:59:37 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="hibernate.model.Empresaempleo" table="empresaempleo" catalog="node">
+        <composite-id name="id" class="hibernate.model.EmpresaempleoId">
+            <key-property name="usuarioIdusuario" type="int">
+                <column name="usuario_idusuario" />
+            </key-property>
+            <key-property name="empleoIdEmpleo" type="int">
+                <column name="Empleo_idEmpleo" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="empleo" class="hibernate.model.Empleo" update="false" insert="false" fetch="select">
+            <column name="Empleo_idEmpleo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="hibernate.model.Usuario" update="false" insert="false" fetch="select">
+            <column name="usuario_idusuario" not-null="true" />
+        </many-to-one>
+        <property name="salario" type="int">
+            <column name="Salario" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
